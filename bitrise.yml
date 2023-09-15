@@ -49,8 +49,8 @@ workflows:
     - deploy-to-bitrise-io@2: {}
 meta:
   bitrise.io:
-    stack: osx-xcode-14.3.x-ventura
-    machine_type_id: g2-m1.8core
+    stack: osx-xcode-14.3.x-venturai
+    machine_type_id: g2-m1.8corei
 app:
   envs:
   - opts:
