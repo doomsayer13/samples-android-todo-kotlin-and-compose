@@ -47,6 +47,10 @@ workflows:
     - save-cocoapods-cache@1: {}
     - save-spm-cache@1: {}
     - deploy-to-bitrise-io@2: {}
+meta:
+  bitrise.io:
+    stack: osx-xcode-14.3.x-venturai
+    machine_type_id: g2-m1.8corei
 app:
   envs:
   - opts:
