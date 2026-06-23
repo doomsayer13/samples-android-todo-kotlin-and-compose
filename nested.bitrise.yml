@@ -1,0 +1,34 @@
+# This is an example of a nested bitrise.yml, which is performed via a nested `bitrise` CLI call during a build.
+# The build starts with a different `bitrise.yml`, which then runs this nested bitrise.yml via the `bitrise` CLI.
+---
+format_version: '13'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+
+workflows:
+  run_tests:
+    summary: Run your Android unit tests and get the test report.
+    description: The workflow will first clone your Git repository, cache your Gradle
+      dependencies, install Android tools, run your Android unit tests and save the
+      test report.
+    steps:
+    - restore-gradle-cache@2: {}
+    - android-unit-test@1:
+        inputs:
+        - project_location: "$PROJECT_LOCATION"
+        - variant: "$VARIANT"
+        - cache_level: none
+    - save-gradle-cache@1: {}
+    - deploy-to-bitrise-io@2: {}
+    
+app:
+  envs:
+  - opts:
+      is_expand: false
+    PROJECT_LOCATION: "."
+  - opts:
+      is_expand: false
+    MODULE: ''
+  - opts:
+      is_expand: false
+    VARIANT: ''
+
